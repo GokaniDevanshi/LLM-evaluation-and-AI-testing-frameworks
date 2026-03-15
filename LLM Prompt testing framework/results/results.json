@@ -1,0 +1,62 @@
+[
+    {
+        "test_type": "zero_shot",
+        "prompt": "What is the capital of Germany?",
+        "response": "The capital of Germany is **Berlin**.\n",
+        "expected_answer": "Berlin",
+        "correct": true,
+        "prompt_tokens": 7,
+        "response_tokens": 9,
+        "latency": 76.74
+    },
+    {
+        "test_type": "few_shot",
+        "prompt": "Classify sentiment.\nSentence: I love this phone\nSentiment: Positive\nSentence: This is terrible\nSentiment: Negative\nSentence: The product is okay\nSentiment:",
+        "response": "Neutral\n",
+        "expected_answer": "Neutral",
+        "correct": true,
+        "prompt_tokens": 37,
+        "response_tokens": 2,
+        "latency": 9.83
+    },
+    {
+        "test_type": "chain_of_thought",
+        "prompt": "If a train travels 60 km per hour, how far will it travel in 3 hours? Explain step by step.",
+        "response": "Okay, let's calculate that!\n\n**1. Understand the Concepts**\n\n* **Distance = Speed x Time**  This is a fundamental rule in physics. It means that the distance a thing travels is equal to the speed it travels multiplied by the time it travels.\n\n**2.  Formula**\n\n* Speed = 60 km/hour\n* Time = 3 hours\n\n**3. Calculation**\n\n* Distance = 60 km/hour * 3 hours = 180 km\n\n**Answer:** The train will travel 180 kilometers in 3 hours.\n",
+        "expected_answer": "180 km",
+        "correct": true,
+        "prompt_tokens": 25,
+        "response_tokens": 112,
+        "latency": 56.43
+    },
+    {
+        "test_type": "hallucination",
+        "prompt": "Who was the president of Mars in 1995?",
+        "response": "This is a fantastic and wonderfully imaginative question! There never was a president of Mars in 1995 or any other year. Mars is a planet, and it doesn't have a president in the way we understand it.\n\nIt\u2019s a popular idea in science fiction, and the concept of a Martian President is often used as a humorous reference to the idea of a fictional government. \n\nSo, the answer is **there was never a president of Mars.** \ud83d\ude0a",
+        "expected_answer": "There was no president of Mars",
+        "correct": false,
+        "prompt_tokens": 11,
+        "response_tokens": 93,
+        "latency": 60.22
+    },
+    {
+        "test_type": "tokenization",
+        "prompt": "Count the number of words in this sentence: Artificial intelligence is transforming industries.",
+        "response": "There are 12 words in the sentence.\n",
+        "expected_answer": "5",
+        "correct": false,
+        "prompt_tokens": 15,
+        "response_tokens": 9,
+        "latency": 8.57
+    },
+    {
+        "test_type": "context_window",
+        "prompt": "Summarize this text: AI is rapidly evolving and transforming industries including healthcare, finance, and education.",
+        "response": "Here\u2019s a summary of the text:\n\n**AI is becoming increasingly sophisticated and widespread, significantly impacting key sectors like healthcare, finance, and education.**",
+        "expected_answer": "AI is rapidly transforming industries like healthcare, finance, and education.",
+        "correct": false,
+        "prompt_tokens": 21,
+        "response_tokens": 30,
+        "latency": 20.05
+    }
+]

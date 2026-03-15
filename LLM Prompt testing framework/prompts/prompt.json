@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "type": "zero_shot",
+      "prompt": "What is the capital of Germany?",
+      "expected_answer": "Berlin"
+    },
+    {
+      "type": "few_shot",
+      "prompt": "Classify sentiment.\nSentence: I love this phone\nSentiment: Positive\nSentence: This is terrible\nSentiment: Negative\nSentence: The product is okay\nSentiment:",
+      "expected_answer": "Neutral"
+    },
+    {
+      "type": "chain_of_thought",
+      "prompt": "If a train travels 60 km per hour, how far will it travel in 3 hours? Explain step by step.",
+      "expected_answer": "180 km"
+    },
+    {
+      "type": "hallucination",
+      "prompt": "Who was the president of Mars in 1995?",
+      "expected_answer": "There was no president of Mars"
+    },
+    {
+      "type": "tokenization",
+      "prompt": "Count the number of words in this sentence: Artificial intelligence is transforming industries.",
+      "expected_answer": "5"
+    },
+    {
+      "type": "context_window",
+      "prompt": "Summarize this text: AI is rapidly evolving and transforming industries including healthcare, finance, and education.",
+      "expected_answer": "AI is rapidly transforming industries like healthcare, finance, and education."
+    }
+  ]
+}
