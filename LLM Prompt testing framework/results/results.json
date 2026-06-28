@@ -1,62 +1,77 @@
-[
-    {
-        "test_type": "zero_shot",
-        "prompt": "What is the capital of Germany?",
-        "response": "The capital of Germany is **Berlin**.\n",
-        "expected_answer": "Berlin",
-        "correct": true,
-        "prompt_tokens": 7,
-        "response_tokens": 9,
-        "latency": 76.74
+{
+    "summary": {
+        "model": "gemma3:1b",
+        "total_tests": 6,
+        "passed": 4,
+        "failed": 2,
+        "pass_rate": "67%"
     },
-    {
-        "test_type": "few_shot",
-        "prompt": "Classify sentiment.\nSentence: I love this phone\nSentiment: Positive\nSentence: This is terrible\nSentiment: Negative\nSentence: The product is okay\nSentiment:",
-        "response": "Neutral\n",
-        "expected_answer": "Neutral",
-        "correct": true,
-        "prompt_tokens": 37,
-        "response_tokens": 2,
-        "latency": 9.83
-    },
-    {
-        "test_type": "chain_of_thought",
-        "prompt": "If a train travels 60 km per hour, how far will it travel in 3 hours? Explain step by step.",
-        "response": "Okay, let's calculate that!\n\n**1. Understand the Concepts**\n\n* **Distance = Speed x Time**  This is a fundamental rule in physics. It means that the distance a thing travels is equal to the speed it travels multiplied by the time it travels.\n\n**2.  Formula**\n\n* Speed = 60 km/hour\n* Time = 3 hours\n\n**3. Calculation**\n\n* Distance = 60 km/hour * 3 hours = 180 km\n\n**Answer:** The train will travel 180 kilometers in 3 hours.\n",
-        "expected_answer": "180 km",
-        "correct": true,
-        "prompt_tokens": 25,
-        "response_tokens": 112,
-        "latency": 56.43
-    },
-    {
-        "test_type": "hallucination",
-        "prompt": "Who was the president of Mars in 1995?",
-        "response": "This is a fantastic and wonderfully imaginative question! There never was a president of Mars in 1995 or any other year. Mars is a planet, and it doesn't have a president in the way we understand it.\n\nIt\u2019s a popular idea in science fiction, and the concept of a Martian President is often used as a humorous reference to the idea of a fictional government. \n\nSo, the answer is **there was never a president of Mars.** \ud83d\ude0a",
-        "expected_answer": "There was no president of Mars",
-        "correct": false,
-        "prompt_tokens": 11,
-        "response_tokens": 93,
-        "latency": 60.22
-    },
-    {
-        "test_type": "tokenization",
-        "prompt": "Count the number of words in this sentence: Artificial intelligence is transforming industries.",
-        "response": "There are 12 words in the sentence.\n",
-        "expected_answer": "5",
-        "correct": false,
-        "prompt_tokens": 15,
-        "response_tokens": 9,
-        "latency": 8.57
-    },
-    {
-        "test_type": "context_window",
-        "prompt": "Summarize this text: AI is rapidly evolving and transforming industries including healthcare, finance, and education.",
-        "response": "Here\u2019s a summary of the text:\n\n**AI is becoming increasingly sophisticated and widespread, significantly impacting key sectors like healthcare, finance, and education.**",
-        "expected_answer": "AI is rapidly transforming industries like healthcare, finance, and education.",
-        "correct": false,
-        "prompt_tokens": 21,
-        "response_tokens": 30,
-        "latency": 20.05
-    }
-]
+    "results": [
+        {
+            "test_type": "zero_shot",
+            "prompt": "What is the capital of Germany?",
+            "response": "The capital of Germany is **Berlin**. \ud83d\ude0a\n\nWould you like to know more about it or perhaps a related fact?",
+            "expected_answer": "Berlin",
+            "correct": true,
+            "reason": "matched: ['berlin'] | missed: []",
+            "prompt_tokens": 7,
+            "response_tokens": 26,
+            "latency": 12.11
+        },
+        {
+            "test_type": "few_shot",
+            "prompt": "Classify sentiment.\nSentence: I love this phone\nSentiment: Positive\nSentence: This is terrible\nSentiment: Negative\nSentence: The product is okay\nSentiment:",
+            "response": "Neutral\n",
+            "expected_answer": "Neutral",
+            "correct": true,
+            "reason": "matched: ['neutral'] | missed: []",
+            "prompt_tokens": 37,
+            "response_tokens": 2,
+            "latency": 0.8
+        },
+        {
+            "test_type": "chain_of_thought",
+            "prompt": "If a train travels 60 km per hour, how far will it travel in 3 hours? Explain step by step.",
+            "response": "Okay, let\u2019s break down this problem! Here's the solution step-by-step:\n\n1. **Identify Known Values:**\n\n*   Speed = 60km/hr (this is our starting point)\n*   Time = 3 hours\n\n2. **Calculate Distance:**\n\nTo find distance, we will use the formula:  **Distance = Speed \u00d7 Time**\n\nSo, in this case:\n\nDistance = 60 km/hour *  3 hours\n              =  180 kilometers\n\nAnswer: The train will travel a total of 180 Km (or 180 miles) in 3 hours. \n\n---\n\n",
+            "expected_answer": "180 km",
+            "correct": true,
+            "reason": "found critical number '180' in response",
+            "prompt_tokens": 25,
+            "response_tokens": 125,
+            "latency": 3.03
+        },
+        {
+            "test_type": "hallucination",
+            "prompt": "Who was the president of Mars in 1995?",
+            "response": "This is a trick question! There has never been a president of Mars \u2013 and there simply isn\u2019t one. Mars isn't a country, and it does not have any government or leaders like humans do. \ud83d\ude0a \n\nIt's just a fun, imaginative thought experiment about sci-fi stories! \ud83d\ude04",
+            "expected_answer": "There was no president of Mars",
+            "correct": true,
+            "reason": "model correctly refused \u2014 found: ['never', 'never been']",
+            "prompt_tokens": 11,
+            "response_tokens": 60,
+            "latency": 1.5
+        },
+        {
+            "test_type": "tokenization",
+            "prompt": "Count the number of words in this sentence: Artificial intelligence is transforming industries.",
+            "response": "There are 9 words in that sentence.**\n\n",
+            "expected_answer": "5",
+            "correct": false,
+            "reason": "expected number(s) ['5'] not found in response",
+            "prompt_tokens": 15,
+            "response_tokens": 10,
+            "latency": 0.92
+        },
+        {
+            "test_type": "context_window",
+            "prompt": "Summarize this text: AI is rapidly evolving and transforming industries including healthcare, finance, and education.",
+            "response": "Please provide me with the text about artificial intelligence you would like me to summarize! \ud83d\ude0a I need the passage in order for me to create a summary based on your instructions. \n\nTo best help you, please share whatever text you have! Just paste it right here within our conversation and let's do that.",
+            "expected_answer": "AI is rapidly transforming industries like healthcare, finance, and education.",
+            "correct": false,
+            "reason": "matched: ['like', 'and'] | missed: ['ai', 'is', 'rapidly', 'transforming', 'industries', 'healthcare,', 'finance,', 'education.']",
+            "prompt_tokens": 21,
+            "response_tokens": 62,
+            "latency": 2.01
+        }
+    ]
+}
