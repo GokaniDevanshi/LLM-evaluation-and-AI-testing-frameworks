@@ -1,0 +1,17 @@
+[
+    {
+        "question": "Which tool automates web browsers?",
+        "expected_document": "playwright.txt",
+        "expected_answer": "Playwright is a browser automation framework developed by Microsoft. It supports Chromium, Firefox, and WebKit."
+    },
+    {
+        "question": "Which city is called the Manchester of India?",
+        "expected_document": "History_of_Ahmedabad.txt",
+        "expected_answer": "Ahmedabad is known as the Manchester of India."
+    },
+    {
+        "question": "What browser engines does Playwright support?",
+        "expected_document": "playwright.txt",
+        "expected_answer": "Playwright supports Chromium, Firefox, and WebKit."
+    }
+]

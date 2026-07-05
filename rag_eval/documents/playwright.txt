@@ -1,0 +1,16 @@
+Playwright enables reliable web automation for testing, scripting, and AI agents.
+
+One API to drive Chromium, Firefox, and WebKit — in your tests, your scripts, and your agent workflows. Available for TypeScript, Python, .NET, and Java.
+
+Playwright Test
+Full-featured test runner with auto-waiting, assertions, tracing, and parallelism across Chromium, Firefox, and WebKit.
+npm init playwright@latest
+
+Playwright CLI
+Token-efficient browser automation for coding agents like Claude Code and GitHub Copilot. Skill-based workflows without large context overhead.
+npm i -g @playwright/cli@latest
+
+Playwright MCP
+Model Context Protocol server that gives AI agents full browser control through structured accessibility snapshots.
+npx @playwright/mcp@latest
+
